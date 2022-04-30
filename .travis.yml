@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "13"
+services:
+  - docker
+before_script:
+  - echo "Before script"
+script:
+  - docker --version # print the version for logging
+  - docker build -t simple-node .
+  - docker tag travis_ci smudacity/simple-node-travis:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push smudacity/simple-node-travis
