@@ -4,7 +4,7 @@ node_js:
 services:
   - docker
 before_script:
-  - echo "Before script - after free plan activation"
+  - echo "Before script - after free plan activation now env variables"
 script:
   - docker --version # print the version for logging
   - docker build -t travis_ci .
