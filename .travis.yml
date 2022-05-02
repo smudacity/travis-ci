@@ -7,9 +7,9 @@ before_script:
   - echo "Before script - after free plan activation"
 script:
   - docker --version # print the version for logging
-  - docker build -t simple-node .
-  - docker tag travis_ci smudacity/simple-node-travis:latest
+  - docker build -t travis_ci .
+  - docker tag travis_ci smudacity/travis_ci
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push smudacity/simple-node-travis
+  - docker push smudacity/travis_ci
